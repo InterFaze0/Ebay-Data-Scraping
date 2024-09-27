@@ -28,9 +28,6 @@ for item in products:
 
     item_details = item_details.find_all('div',class_ = 's-item__details-section--primary')[0]
     itemPrice = item_details.find_all('div',class_ = 's-item__detail s-item__detail--primary')[0].text
-    itemPrice = itemPrice[1:].replace('.00','')
-    itemPrice = itemPrice.replace('.99','')
-    itemPrice = int(itemPrice)
     shoeProperties = {
         'Full_name': fullyName,
         'Subtitle' : itemName,
@@ -38,26 +35,9 @@ for item in products:
     }
     product_list.append(shoeProperties)
 df = pd.DataFrame(product_list)
-df = df.sort_values('Price',ascending= False)
+
 df.to_excel('shoes.xlsx')
 df.to_csv('shoes.csv')
-
-
-
-            
-    
-    
-
-
-
-
-
-
-
-
-
-
-
 
 
 
